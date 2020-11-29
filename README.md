@@ -1,60 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column       | Type    | Options                   |
-| ----------   | ------- | ------------------------- |
-| nickname     | string  | null: false               |
-| mail address | string  | null: false, unique: true |
-| password     | string  | null: false               |
-| name         | string  | null: false               |
-| name(kana)   | string  | null: false               |
-| birthday     | integer | null: false               |
+Things you may want to cover:
 
-### Association
---has_many: items
---has_many: purchase
+* Ruby version
 
-## items テーブル
+* System dependencies
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| image        | string     | null: false                    |
-| description  | string     | null: false                    |
-| category     | string     | null: false                    |
-| status       | string     | null: false                    |
-| price        | integer    | null: false                    |
-| Listing date | datetime   |                                |
-| user_id      | references | null: false, foreign_key: true |
+* Configuration
 
-### Association
---belongs_to: users
---has_one: purchase
+* Database creation
 
-## purchase テーブル
+* Database initialization
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| item_id      | references | null: false, foreign_key: true |
-| purchase day | datetime   |                                |
+* How to run the test suite
 
-### Association
---belongs_to: users
---belongs_to: purchase
---has_one: shipping address
+* Services (job queues, cache servers, search engines, etc.)
 
-## shipping address テーブル
+* Deployment instructions
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| zip code    | integer    | null: false                    |
-| prefecture  | string     | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| tel number  | integer    | null: false                    |
-| purchase_id | references | null: false, foreign_key: true |
-
-### Association
---belongs_to: purchase
+* ...
