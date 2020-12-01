@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column       | Type    | Options                   |
-| ----------   | ------- | ------------------------- |
-| nickname     | string  | null: false               |
-| mail address | string  | null: false, unique: true |
-| password     | string  | null: false               |
-| name         | string  | null: false               |
-| name(kana)   | string  | null: false               |
-| birthday     | integer | null: false               |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| family name        | string  | null: false               |
+| first name         | string  | null: false               |
+| family name(kana)  | string  | null: false               |
+| first name(kana)   | string  | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 --has_many: items
@@ -17,16 +19,18 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| image        | string     | null: false                    |
-| description  | string     | null: false                    |
-| category     | string     | null: false                    |
-| status       | string     | null: false                    |
-| price        | integer    | null: false                    |
-| Listing date | datetime   |                                |
-| user_id      | references | null: false, foreign_key: true |
+| Column                  | Type     | Options                        |
+| ----------------------- | -------- | ------------------------------ |
+| name                    | string   | null: false                    |
+| description             | text     | null: false                    |
+| category                | string   | null: false                    |
+| status                  | string   | null: false                    |
+| price                   | integer  | null: false                    |
+| shipping charge         | string   | null: false                    |
+| shipping area           | string   | null: false                    |
+| estimated shipping date | string   | null: false                    |
+| Listing date            | datetime |                                |
+| user_id                 | integer  | null: false, foreign_key: true |
 
 ### Association
 --belongs_to: users
@@ -34,11 +38,10 @@
 
 ## purchase テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| item_id      | references | null: false, foreign_key: true |
-| purchase day | datetime   |                                |
+| Column       | Type    | Options                        |
+| ------------ | ------- | ------------------------------ |
+| user_id      | integer | null: false, foreign_key: true |
+| item_id      | integer | null: false, foreign_key: true |
 
 ### Association
 --belongs_to: users
@@ -47,14 +50,15 @@
 
 ## shipping address テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| zip code    | integer    | null: false                    |
-| prefecture  | string     | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| tel number  | integer    | null: false                    |
-| purchase_id | references | null: false, foreign_key: true |
+| Column        | Type    | Options                        |
+| ------------- | --------| ------------------------------ |
+| zip code      | integer | null: false                    |
+| prefectures   | string  | null: false                    |
+| municipality  | string  | null: false                    |
+| address       | string  | null: false                    |
+| building name | string  |                                |
+| tel number    | integer | null: false                    |
+| purchase_id   | integer | null: false, foreign_key: true |
 
 ### Association
 --belongs_to: purchase
