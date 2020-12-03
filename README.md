@@ -15,7 +15,7 @@
 
 ### Association
 --has_many: items
---has_many: purchase
+--has_many: purchases
 
 ## items テーブル
 
@@ -23,17 +23,16 @@
 | ----------------------- | -------- | ------------------------------ |
 | name                    | string   | null: false                    |
 | description             | text     | null: false                    |
-| category                | string   | null: false                    |
-| status                  | string   | null: false                    |
+| category_id             | integer  | null: false                    |
+| status_id               | integer  | null: false                    |
 | price                   | integer  | null: false                    |
-| shipping charge         | string   | null: false                    |
-| shipping area           | string   | null: false                    |
-| estimated shipping date | string   | null: false                    |
-| Listing date            | datetime |                                |
+| shipping charge_id      | integer  | null: false                    |
+| shipping area_id        | integer  | null: false                    |
+| estimated shipping date | integer  | null: false                    |
 | user_id                 | integer  | null: false, foreign_key: true |
 
 ### Association
---belongs_to: users
+--belongs_to: user
 --has_one: purchase
 
 ## purchase テーブル
@@ -44,21 +43,21 @@
 | item_id      | integer | null: false, foreign_key: true |
 
 ### Association
---belongs_to: users
+--belongs_to: user
 --belongs_to: purchase
 --has_one: shipping address
 
 ## shipping address テーブル
 
-| Column        | Type    | Options                        |
-| ------------- | --------| ------------------------------ |
-| zip code      | integer | null: false                    |
-| prefectures   | string  | null: false                    |
-| municipality  | string  | null: false                    |
-| address       | string  | null: false                    |
-| building name | string  |                                |
-| tel number    | integer | null: false                    |
-| purchase_id   | integer | null: false, foreign_key: true |
+| Column         | Type    | Options                        |
+| -------------- | --------| ------------------------------ |
+| zip code       | string  | null: false                    |
+| prefectures_id | integer | null: false                    |
+| municipality   | string  | null: false                    |
+| address        | string  | null: false                    |
+| building name  | string  |                                |
+| tel number     | string  | null: false                    |
+| purchase_id    | integer | null: false, foreign_key: true |
 
 ### Association
 --belongs_to: purchase
