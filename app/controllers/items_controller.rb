@@ -4,8 +4,6 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  before action :authenticate_user!, only: [:new]
-
   def new
     @item = Item.new
   end
