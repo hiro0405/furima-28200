@@ -52,10 +52,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category is not a number")
       end
 
+      it "category_idが1の場合は出品できない" do
+        @item.category_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+
       it "status_idがないと出品できない" do
         @item.status_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Status is not a number")
+      end
+
+      it "status_idが1の場合は出品できない" do
+        @item.status_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
 
       it "shipping_charge_idがないと出品できない" do
@@ -64,16 +76,34 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping charge is not a number")
       end
 
+      it "shipping_charge_idが1の場合は出品できない" do
+        @item.shipping_charge_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+      end
+
       it "shipping_area_idがないと出品できない" do
         @item.shipping_area_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area is not a number")
       end
 
+      it "shipping_area_idが1の場合は出品できない" do
+        @item.shipping_area_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
+      end
+
       it "estimated_shipping_date_idがないと出品できない" do
         @item.estimated_shipping_date_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Estimated shipping date is not a number")
+      end
+
+      it "estimated_shipping_date_idが1の場合は出品できない" do
+        @item.estimated_shipping_date_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Estimated shipping date must be other than 1")
       end
 
       it "priceが空だと出品できない" do
